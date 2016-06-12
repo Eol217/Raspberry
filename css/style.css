@@ -155,3 +155,50 @@ input[name^=engine] {
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
 }
+
+.eng-2-break {
+  position: absolute;
+  top: 581px;
+  left: 20px;
+
+  display: none; 
+
+  width: 550px;
+  height: 80px;
+
+  border: 1px solid black;
+  background-color: red;
+  opacity: 0.4;
+}
+
+@-webkit-keyframes eng-2-break {
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+@keyframes eng-2-break {
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+#engine-2-break:checked ~ .eng-2-break {
+  display: block;
+
+  -webkit-animation-name: eng-2-break;
+          animation-name: eng-2-break;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
