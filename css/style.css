@@ -202,3 +202,82 @@ input[name^=engine] {
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
 }
+
+.elevator {
+  position: absolute;
+  top: 158px;
+  left: 431px;
+
+  width: 50px;
+  height: 615px;
+
+  border: 1px solid black;
+
+  overflow: hidden;
+}
+
+.elevator div[class^="lift"] {
+  position: absolute;
+
+  width: 50px;
+  height: 10px;
+
+  background-color: black;
+}
+
+.elevator .lift-1 {
+  bottom: -100px;
+}
+
+.elevator .lift-2 {
+  bottom: 0px;
+}
+
+.elevator .lift-3 {
+  bottom: 100px;
+}
+
+.elevator .lift-4 {
+  bottom: 200px;
+}
+
+.elevator .lift-5 {
+  bottom: 300px;
+}
+
+.elevator .lift-6 {
+  bottom: 400px;
+}
+
+.elevator .lift-7 {
+  bottom: 500px;
+}
+
+.elevator .lift-8 {
+  bottom: 600px;
+}
+
+@-webkit-keyframes elevator {
+  100% {-webkit-transform: translateY(-100px);transform: translateY(-100px);}
+}
+
+@keyframes elevator {
+  100% {-webkit-transform: translateY(-100px);transform: translateY(-100px);}
+}
+
+.elevator div[class^="lift"] {
+  -webkit-animation-name: elevator;
+          animation-name: elevator;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+#engine-1-off:checked ~ .elevator div[class^="lift"],
+#engine-1-break:checked ~ .elevator div[class^="lift"] {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
