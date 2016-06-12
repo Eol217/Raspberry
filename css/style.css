@@ -1,0 +1,157 @@
+.container {
+  position: relative;
+
+  width: 600px;
+  min-height: 1419px;
+  margin: 0 auto;
+
+  background: url("../img/grain-elevator.png") no-repeat top center;
+  background-size: contain;
+}
+
+input[name^=engine] {
+  display: none;
+}
+
+.controls {
+  width: 135px;
+  padding: 30px;
+}
+
+.controls fieldset {
+  margin-bottom: 10px;
+}
+
+.controls label {
+  position: relative;
+
+  display: inline-block;
+  padding: 5px;
+  padding-left: 30px;
+
+  vertical-align: top;
+}
+
+.controls label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+  border: 2px solid black; 
+
+}
+
+.sensor {
+  position: absolute;
+  top: 65px;
+  left: 295px;
+
+  width: 30px;
+  height: 30px;
+
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.sensor-2 {
+  top: 550px;
+  left: 65px;
+}
+
+#engine-1-off:checked ~ .sensor-1,
+#engine-1-off:checked ~ .controls label[for="engine-1-off"]::before {
+  background-color: gray;
+}
+
+#engine-1-on:checked ~ .sensor-1,
+#engine-1-on:checked ~ .controls label[for="engine-1-on"]::before {
+  background-color: green;
+}
+
+#engine-1-break:checked ~ .sensor-1,
+#engine-1-break:checked ~ .controls label[for="engine-1-break"]::before {
+  background-color: red;
+}
+
+#engine-2-off:checked ~ .sensor-2,
+#engine-2-off:checked ~ .controls label[for="engine-2-off"]::before {
+  background-color: gray;
+}
+
+#engine-2-on:checked ~ .sensor-2,
+#engine-2-on:checked ~ .controls label[for="engine-2-on"]::before {
+  background-color: green;
+}
+
+#engine-2-break:checked ~ .sensor-2,
+#engine-2-break:checked ~ .controls label[for="engine-2-break"]::before {
+  background-color: red;
+}
+
+.transporter {
+  position: absolute;
+  top: 605px;
+  left: 104px;
+
+  width: 282px;
+  height: 10px;
+
+  border: 1px solid black;
+
+  overflow: hidden;
+}
+
+.transporter div[class^="platform"] {
+  position: absolute;
+  top:0;
+
+  width: 120px;
+  height: 20px;
+
+  background-color: black;
+}
+
+.transporter .platform-1 {
+  left: -240px;
+}
+
+.transporter .platform-2 {
+  left: -100px;
+}
+
+.transporter .platform-3 {
+  left: 40px;
+}
+
+.transporter .platform-4 {
+  left: 180px;
+}
+
+@-webkit-keyframes transporter {
+  100% {-webkit-transform: translateX(141px);transform: translateX(141px);}
+}
+
+@keyframes transporter {
+  100% {-webkit-transform: translateX(141px);transform: translateX(141px);}
+}
+
+.transporter div[class^="platform"] {
+  -webkit-animation-name: transporter;
+          animation-name: transporter;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+#engine-2-off:checked ~ .transporter div[class^="platform"],
+#engine-2-break:checked ~ .transporter div[class^="platform"] {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}

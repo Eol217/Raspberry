@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Работа элеватора</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <input type="radio" name="engine-1" id="engine-1-off" value="1" checked>
+      <input type="radio" name="engine-1" id="engine-1-on" value="2">
+      <input type="radio" name="engine-1" id="engine-1-break" value="3">
+      <input type="radio" name="engine-2" id="engine-2-off" value="1" checked>
+      <input type="radio" name="engine-2" id="engine-2-on" value="2">
+      <input type="radio" name="engine-2" id="engine-2-break" value="3">
+      <form  class="controls">
+        <fieldset>
+          <legend>Двигатель №1</legend>
+            <label for="engine-1-off">
+              Выключен
+            </label>
+            <label for="engine-1-on">
+              Включен
+            </label>
+            <label for="engine-1-break">
+              Сломан
+            </label>
+        </fieldset>
+        <fieldset>
+          <legend>Двигатель №2</legend>
+            <label for="engine-2-off">
+              Выключен
+            </label>
+            <label for="engine-2-on">
+              Включен
+            </label>
+            <label for="engine-2-break">
+              Сломан
+            </label>
+        </fieldset>
+      </form>
+      <div class="sensor sensor-1"></div>
+      <div class="sensor sensor-2"></div>
+      <div class="transporter">
+        <div class="platform-1"></div>
+        <div class="platform-2"></div>
+        <div class="platform-3"></div>
+        <div class="platform-4"></div>
+      </div>
+    </div>
+  </body>
+</html>
