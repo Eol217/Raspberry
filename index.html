@@ -7,48 +7,47 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="container">
-      <input type="radio" name="engine-1" id="engine-1-off" value="1" checked>
-      <input type="radio" name="engine-1" id="engine-1-on" value="2">
-      <input type="radio" name="engine-1" id="engine-1-break" value="3">
-      <input type="radio" name="engine-2" id="engine-2-off" value="1" checked>
-      <input type="radio" name="engine-2" id="engine-2-on" value="2">
-      <input type="radio" name="engine-2" id="engine-2-break" value="3">
-      <form  class="controls">
+    <div class="container"> <!-- инпуты управляют состояниями двигателей, один checked на каждую группу из 3 пунктов -->
+      <input type="radio" name="elevator" id="elevator-off" value="1" checked>  <!-- подъемник выключен -->
+      <input type="radio" name="elevator" id="elevator-on" value="2">           <!-- подъемник включен -->
+      <input type="radio" name="elevator" id="elevator-break" value="3">        <!-- подъемник сломан (и остановлен)-->
+      <input type="radio" name="transporter" id="transporter-off" value="1" checked>  <!-- лента выключена -->
+      <input type="radio" name="transporter" id="transporter-on" value="2">           <!-- лента включена -->
+      <input type="radio" name="transporter" id="transporter-break" value="3">        <!-- лента сломана (и остановлена) -->
+      <div class="command-btn">
+        <button class="btn" id="btn-on" value="on">Пуск</button>
+        <button class="btn" id="btn-off" value="off">Стоп</button>
+      </div>
+      <!-- всю форму ниже можно убрать, нужна только для видимого интерфейса -->
+      <!-- <form  class="controls">
         <fieldset>
           <legend>Двигатель №1</legend>
-            <label for="engine-1-off">
+            <label for="elevator-off">
               Выключен
             </label>
-            <label for="engine-1-on">
+            <label for="elevator-on">
               Включен
             </label>
-            <label for="engine-1-break">
+            <label for="elevator-break">
               Сломан
             </label>
         </fieldset>
         <fieldset>
           <legend>Двигатель №2</legend>
-            <label for="engine-2-off">
+            <label for="transporter-off">
               Выключен
             </label>
-            <label for="engine-2-on">
+            <label for="transporter-on">
               Включен
             </label>
-            <label for="engine-2-break">
+            <label for="transporter-break">
               Сломан
             </label>
         </fieldset>
-      </form>
-      <div class="sensor sensor-1"></div>
-      <div class="sensor sensor-2"></div>
-      <div class="transporter">
-        <div class="platform-1"></div>
-        <div class="platform-2"></div>
-        <div class="platform-3"></div>
-        <div class="platform-4"></div>
-      </div>
-      <div class="eng-2-break"></div>
+      </form> -->
+      <!-- убирать до сюда -->
+      <div class="sensor sensor-elevator"></div>   <!-- датчик подъемника -->
+      <div class="sensor sensor-transporter"></div>   <!-- датчик горизонтальной ленты -->
       <div class="elevator">
         <div class="lift-1"></div>
         <div class="lift-2"></div>
@@ -57,9 +56,16 @@
         <div class="lift-5"></div>
         <div class="lift-6"></div>
         <div class="lift-7"></div>
-        <div class="lift-8"></div>
+        <div class="lift-8"></div>             <!-- подъемник -->
       </div>
-      <div class="eng-1-break"></div>
+      <div class="elevator-break"></div>       <!-- слой для поломки подъемника -->
+      <div class="transporter">             <!-- горизонтальная лента -->
+        <div class="platform-1"></div>
+        <div class="platform-2"></div>
+        <div class="platform-3"></div>
+        <div class="platform-4"></div>          
+      </div>
+      <div class="transporter-break"></div>       <!-- слой для поломки горизонтальной ленты -->
     </div>
   </body>
 </html>
