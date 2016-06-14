@@ -5,46 +5,97 @@
   min-height: 950px;
   margin: 0 auto;
 
-  background: url("../img/grain-elevator.png") no-repeat top center;
+  background: #ffffff url("../img/grain-elevator.png") no-repeat top center;
   background-size: contain;
 }
 
-input[name^=engine] {
-  display: none;
+.container input {
+  display: none;    /*скрываем "настоящие" управляющие элементы*/
 }
 
-.controls {
-  width: 135px;
-  padding: 30px;
-}
-
-.controls fieldset {
-  margin-bottom: 10px;
-}
-
-.controls label {
-  position: relative;
-
-  display: inline-block;
-  padding: 5px;
-  padding-left: 30px;
-
-  vertical-align: top;
-}
-
-.controls label::before {
-  content: "";
+.command-btn {
   position: absolute;
-  left: 0;
+  top: 30px;
+  left: 30px;
 
-  width: 15px;
-  height: 15px;
-
-  border-radius: 50%;
-  border: 2px solid black; 
-
+  width: 200px;
 }
 
+.btn {
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 10px 33px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  font-family: "Arial", sans-serif;
+  vertical-align: top;
+  text-align: center;
+  color: #000000;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  background-color: #9d9d9d;
+  border: 3px solid #373737;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* начало стилизации блока графического управления, можно удалить */
+// .controls {
+//   width: 135px;
+//   padding: 30px;
+// }
+
+// .controls fieldset {
+//   margin-bottom: 10px;
+// }
+
+// .controls label {
+//   position: relative;
+
+//   display: inline-block;
+//   padding: 5px;
+//   padding-left: 30px;
+
+//   vertical-align: top;
+// }
+
+// .controls label::before {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+
+//   width: 15px;
+//   height: 15px;
+
+//   border-radius: 50%;
+//   border: 2px solid black; 
+
+// }
+
+// #elevator-off:checked ~ .controls label[for="elevator-off"]::before,
+// #transporter-off:checked ~ .controls label[for="transporter-off"]::before {
+//   background-color: gray;
+// }
+
+// #elevator-on:checked ~ .controls label[for="elevator-on"]::before,
+// #transporter-on:checked ~ .controls label[for="transporter-on"]::before {
+//   background-color: green;
+// }
+
+// #elevator-break:checked ~ .controls label[for="elevator-break"]::before,
+// #transporter-break:checked ~ .controls label[for="transporter-break"]::before {
+//   background-color: red;
+// }
+
+/* конец стилизации блока графического управления, можно удалить*/ 
+
+
+/* сенсоры и их состояния*/
 .sensor {
   position: absolute;
   top: 65px;
@@ -57,137 +108,28 @@ input[name^=engine] {
   border-radius: 50%;
 }
 
-.sensor-2 {
+.sensor-transporter {
   top: 550px;
   left: 65px;
 }
 
-#engine-1-off:checked ~ .sensor-1,
-#engine-1-off:checked ~ .controls label[for="engine-1-off"]::before {
+#elevator-off:checked ~ .sensor-elevator,
+#transporter-off:checked ~ .sensor-transporter {
   background-color: gray;
 }
 
-#engine-1-on:checked ~ .sensor-1,
-#engine-1-on:checked ~ .controls label[for="engine-1-on"]::before {
+#elevator-on:checked ~ .sensor-elevator,
+#transporter-on:checked ~ .sensor-transporter {
   background-color: green;
 }
 
-#engine-1-break:checked ~ .sensor-1,
-#engine-1-break:checked ~ .controls label[for="engine-1-break"]::before {
+#elevator-break:checked ~ .sensor-elevator,
+#transporter-break:checked ~ .sensor-transporter {
   background-color: red;
 }
 
-#engine-2-off:checked ~ .sensor-2,
-#engine-2-off:checked ~ .controls label[for="engine-2-off"]::before {
-  background-color: gray;
-}
 
-#engine-2-on:checked ~ .sensor-2,
-#engine-2-on:checked ~ .controls label[for="engine-2-on"]::before {
-  background-color: green;
-}
-
-#engine-2-break:checked ~ .sensor-2,
-#engine-2-break:checked ~ .controls label[for="engine-2-break"]::before {
-  background-color: red;
-}
-
-.transporter {
-  position: absolute;
-  top: 605px;
-  left: 104px;
-  z-index: 7;
-
-  width: 282px;
-  height: 10px;
-
-  border: 1px solid black;
-
-  overflow: hidden;
-}
-
-.transporter div[class^="platform"] {
-  position: absolute;
-  top:0;
-
-  width: 120px;
-  height: 20px;
-
-  background-color: black;
-}
-
-.transporter .platform-1 {
-  left: -240px;
-}
-
-.transporter .platform-2 {
-  left: -100px;
-}
-
-.transporter .platform-3 {
-  left: 40px;
-}
-
-.transporter .platform-4 {
-  left: 180px;
-}
-
-@-webkit-keyframes transporter {
-  100% {-webkit-transform: translateX(141px);transform: translateX(141px);}
-}
-
-@keyframes transporter {
-  100% {-webkit-transform: translateX(141px);transform: translateX(141px);}
-}
-
-.transporter div[class^="platform"] {
-  -webkit-animation-name: transporter;
-          animation-name: transporter;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-}
-
-#engine-2-off:checked ~ .transporter div[class^="platform"],
-#engine-2-break:checked ~ .transporter div[class^="platform"] {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-
-@-webkit-keyframes break-2 {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-.eng-2-break {
-  position: absolute;
-  top: 593px;
-  left:24px;
-  z-index: 9;
-
-  width: 541px;
-  height: 59px;
-
-  background: url("../img/transporter-break.png") no-repeat;
-  opacity: 0;
-}
-
-#engine-2-break:checked ~ .eng-2-break {
-  -webkit-animation-name: break-2;
-          animation-name: break-2;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-}
-
+/*компоненты элеватора*/
 .elevator {
   position: absolute;
   top: 158px;
@@ -243,6 +185,76 @@ input[name^=engine] {
   bottom: 600px;
 }
 
+.elevator-break {
+  position: absolute;
+  top: 25px;
+  left:311px;
+  z-index: 8;
+
+  width: 210px;
+  height: 891px;
+
+  background: url("../img/elevator-break.png") no-repeat;
+  opacity: 0;
+}
+
+
+/*компоненты горизонтальной ленты*/
+.transporter {
+  position: absolute;
+  top: 605px;
+  left: 104px;
+  z-index: 7;
+
+  width: 282px;
+  height: 10px;
+
+  border: 1px solid black;
+
+  overflow: hidden;
+}
+
+.transporter div[class^="platform"] {
+  position: absolute;
+  top:0;
+
+  width: 120px;
+  height: 20px;
+
+  background-color: black;
+}
+
+.transporter .platform-1 {
+  left: -240px;
+}
+
+.transporter .platform-2 {
+  left: -100px;
+}
+
+.transporter .platform-3 {
+  left: 40px;
+}
+
+.transporter .platform-4 {
+  left: 180px;
+}
+
+.transporter-break {
+  position: absolute;
+  top: 593px;
+  left:24px;
+  z-index: 9;
+
+  width: 541px;
+  height: 59px;
+
+  background: url("../img/transporter-break.png") no-repeat;
+  opacity: 0;
+}
+
+
+/*анимация для элеватора*/
 @-webkit-keyframes elevator {
   100% {-webkit-transform: translateY(-100px);transform: translateY(-100px);}
 }
@@ -262,28 +274,67 @@ input[name^=engine] {
           animation-iteration-count: infinite;
 }
 
-#engine-1-off:checked ~ .elevator div[class^="lift"],
-#engine-1-break:checked ~ .elevator div[class^="lift"] {
+#elevator-off:checked ~ .elevator div[class^="lift"],
+#elevator-break:checked ~ .elevator div[class^="lift"] {
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
 }
 
-.eng-1-break {
-  position: absolute;
-  top: 25px;
-  left:311px;
-  z-index: 8;
 
-  width: 210px;
-  height: 891px;
-
-  background: url("../img/elevator-break.png") no-repeat;
-  opacity: 0;
+/*анимация для ленты*/
+@-webkit-keyframes transporter {
+  100% {-webkit-transform: translateX(141px);transform: translateX(141px);}
 }
 
-#engine-1-break:checked ~ .eng-1-break {
-  -webkit-animation-name: break-2;
-          animation-name: break-2;
+@keyframes transporter {
+  100% {-webkit-transform: translateX(141px);transform: translateX(141px);}
+}
+
+.transporter div[class^="platform"] {
+  -webkit-animation-name: transporter;
+          animation-name: transporter;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+#transporter-off:checked ~ .transporter div[class^="platform"],
+#transporter-break:checked ~ .transporter div[class^="platform"] {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+
+/*анимация поломок*/
+@-webkit-keyframes break {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes break {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+#elevator-break:checked ~ .elevator-break {
+  -webkit-animation-name: break;
+          animation-name: break;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+#transporter-break:checked ~ .transporter-break {
+  -webkit-animation-name: break;
+          animation-name: break;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
   -webkit-animation-timing-function: linear;
